@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Class Auto Detailing - Premium Auto Detailing Services in Surrey</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Experience premium auto detailing services in Surrey. Specializing in detailing, paint correction, ceramic coating, and furniture cleaning.">
+    <meta name="keywords" content="auto detailing, paint correction, ceramic coating, furniture cleaning, Surrey">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://topclassautodetailing.com/">
+    <meta property="og:title" content="Top Class Auto Detailing - Premium Auto Detailing Services in Surrey">
+    <meta property="og:description" content="Premium auto detailing services in Surrey. Specializing in detailing, paint correction, ceramic coating, and furniture cleaning.">
+    <meta property="og:image" content="https://topclassautodetailing.com/img/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://topclassautodetailing.com/">
+    <meta property="twitter:title" content="Top Class Auto Detailing - Premium Auto Detailing Services in Surrey">
+    <meta property="twitter:description" content="Premium auto detailing services in Surrey. Specializing in detailing, paint correction, ceramic coating, and furniture cleaning.">
+    <meta property="twitter:image" content="https://topclassautodetailing.com/img/logo.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/logo.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#000000">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#000000',
+                        'secondary': '#FF0000',
+                        'accent': '#FFFFFF',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        [x-cloak] { display: none !important; }
+        body {
+            background: linear-gradient(to bottom, #000000, #FF0000);
+        }
+    </style>
+</head>
+<body class="bg-primary text-white font-sans" x-data="{ mobileMenu: false, currentSlide: 0, loading: false, currentBanner: 0, activeFilter: 'all', modalOpen: false, modalContent: null }" x-init="$nextTick(() => { console.log('Body initialized') })">
+    <!-- Preloader -->
+    <div x-show="loading" class="fixed inset-0 z-50 flex items-center justify-center bg-primary">
+        <div class="text-center">
+            <img src="img/logo.png" alt="Top Class Auto Detailing Logo" class="w-32 h-32 mx-auto mb-4 animate-pulse">
+            <div class="w-16 h-16 border-t-4 border-secondary border-solid rounded-full animate-spin mx-auto"></div>
+        </div>
+    </div>
+
+    <!-- Top Banner -->
+    <div class="bg-gradient-to-r from-primary to-secondary text-white py-2 px-4 relative overflow-hidden">
+        <div class="flex transition-transform duration-500 ease-in-out max-w-4xl mx-auto" x-data="{ currentBanner: 0 }" x-init="setInterval(() => currentBanner = (currentBanner + 1) % 3, 5000)" :style="{ transform: `translateX(-${currentBanner * 100}%)` }">
+            <p class="text-sm w-full flex-shrink-0">
+                🎉 Special offer for new customers! <a href="#contact" class="underline">Book now</a>
+            </p>
+            <p class="text-sm w-full flex-shrink-0">
+                🚗 Call (604) 726-7042 for appointments
+            </p>
+            <p class="text-sm w-full flex-shrink-0">
+                💼 Serving Surrey with excellence!
+            </p>
+        </div>
+        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 space-x-2 z-10">
+            <a href="#" class="text-white hover:text-secondary"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white hover:text-secondary"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white hover:text-secondary"><i class="fab fa-twitter"></i></a>
+        </div>
+    </div>
+
+    <!-- Header with Responsive Navigation -->
+    <header class="bg-primary bg-opacity-90 backdrop-blur-md fixed w-full z-40">
+        <nav class="container mx-auto px-4 py-3" x-data="{ open: false }">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center">
+                    <img src="img/logo.png" alt="Top Class Auto Detailing Logo" class="h-12 w-auto">
+                    <span class="ml-2 text-xl font-bold">Top Class Auto Detailing</span>
+                </a>
+                <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#about" class="hover:text-secondary transition">About Us</a>
+                    <a href="#services" class="hover:text-secondary transition">Services</a>
+                    <a href="#gallery" class="hover:text-secondary transition">Gallery</a>
+                    <a href="#testimonials" class="hover:text-secondary transition">Testimonials</a>
+                    <a href="#contact" class="hover:text-secondary transition">Contact</a>
+                    <a href="#merchandise" class="hover:text-secondary transition">Merchandise</a>
+                </div>
+            </div>
+            <div x-show="open" class="md:hidden mt-3 space-y-2">
+                <a href="#about" class="block hover:text-secondary transition">About Us</a>
+                <a href="#services" class="block hover:text-secondary transition">Services</a>
+                <a href="#gallery" class="block hover:text-secondary transition">Gallery</a>
+                <a href="#testimonials" class="block hover:text-secondary transition">Testimonials</a>
+                <a href="#contact" class="block hover:text-secondary transition">Contact</a>
+                <a href="#merchandise" class="block hover:text-secondary transition">Merchandise</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="h-screen flex items-center justify-center relative overflow-hidden" x-data="{ currentSlide: 0 }" x-init="setInterval(() => currentSlide = (currentSlide + 1) % 3, 5000)">
+            <div class="absolute inset-0 z-0">
+                <div x-show="currentSlide === 0" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1494905998402-395d579af36f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+                <div x-show="currentSlide === 1" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+                <div x-show="currentSlide === 2" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="opacity-0 transform translate-x-full" x-transition:enter-end="opacity-100 transform translate-x-0" x-transition:leave="transition ease-in duration-1000" x-transition:leave-start="opacity-100 transform translate-x-0" x-transition:leave-end="opacity-0 transform -translate-x-full" class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');"></div>
+            </div>
+            <div class="text-center z-10 bg-primary bg-opacity-50 p-8 rounded-lg max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-3xl lg:text-4xl font-semibold mb-4">Premium Auto Detailing Services</h2>
+                <p class="text-lg md:text-xl mb-8">Serving Surrey with professional detailing, paint correction, ceramic coating, and furniture cleaning services!</p>
+                <div class="space-x-4">
+                    <a href="#services" class="bg-secondary text-primary px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-opacity-80 transition text-sm md:text-base">Our Services</a>
+                    <a href="#contact" class="bg-transparent border-2 border-secondary text-secondary px-6 py-2 md:px-8 md:py-3 rounded-full hover:bg-secondary hover:text-primary transition text-sm md:text-base">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section with Modal -->
+        <section id="services" class="py-16 md:py-20 bg-primary">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Our Services</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in cursor-pointer" @click="modalOpen = true; modalContent = { title: 'Detailing', image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'Our comprehensive detailing service includes a thorough cleaning of your vehicle\'s interior and exterior, restoring it to showroom condition.' }">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Detailing" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <i class="fas fa-car-alt text-3xl md:text-4xl text-secondary mb-4"></i>
+                        <h3 class="text-lg md:text-xl font-semibold mb-4">Detailing</h3>
+                        <p class="mb-4 text-sm md:text-base">Comprehensive interior and exterior detailing services.</p>
+                    </div>
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in cursor-pointer" @click="modalOpen = true; modalContent = { title: 'Paint Correction', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'Our paint correction service removes imperfections from your vehicle\'s paint, restoring its original shine and smoothness.' }">
+                        <img  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Paint Correction" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <i class="fas fa-paint-roller text-3xl md:text-4xl text-secondary mb-4"></i>
+                        <h3 class="text-lg md:text-xl font-semibold mb-4">Paint Correction</h3>
+                        <p class="mb-4 text-sm md:text-base">Restore your vehicle's paint to its original glory.</p>
+                    </div>
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in cursor-pointer" @click="modalOpen = true; modalContent = { title: 'Ceramic Coating', image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'Our ceramic coating service provides long-lasting protection for your vehicle\'s paint, enhancing its shine and making it easier to clean.' }">
+                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Ceramic Coating" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <i class="fas fa-shield-alt text-3xl md:text-4xl text-secondary mb-4"></i>
+                        <h3 class="text-lg md:text-xl font-semibold mb-4">Ceramic Coating</h3>
+                        <p class="mb-4 text-sm md:text-base">Long-lasting protection and shine for your vehicle.</p>
+                    </div>
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition text-center fade-in cursor-pointer" @click="modalOpen = true; modalContent = { title: 'Furniture Cleaning', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'Our furniture cleaning service restores the beauty of your home or office furniture, removing stains and refreshing fabrics.' }">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Furniture Cleaning" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <i class="fas fa-couch text-3xl md:text-4xl text-secondary mb-4"></i>
+                        <h3 class="text-lg md:text-xl font-semibold mb-4">Furniture Cleaning</h3>
+                        <p class="mb-4 text-sm md:text-base">Revitalize your home and office furniture.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section with Filters -->
+        <section id="gallery" class="py-16 md:py-20 bg-gradient-to-b from-primary to-secondary">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Our Work</h2>
+                <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-6 md:mb-8 fade-in">
+                    <button @click="activeFilter = 'all'" 
+                            :class="{ 'bg-secondary text-primary': activeFilter === 'all' }"
+                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-accent bg-opacity-10 hover:bg-secondary hover:text-primary transition mb-2 text-sm md:text-base">All</button>
+                    <button @click="activeFilter = 'detailing'"
+                            :class="{ 'bg-secondary text-primary': activeFilter === 'detailing' }"
+                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-accent bg-opacity-10 hover:bg-secondary hover:text-primary transition mb-2 text-sm md:text-base">Detailing</button>
+                    <button @click="activeFilter = 'paint'"
+                            :class="{ 'bg-secondary text-primary': activeFilter === 'paint' }"
+                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-accent bg-opacity-10 hover:bg-secondary hover:text-primary transition mb-2 text-sm md:text-base">Paint Correction</button>
+                    <button @click="activeFilter = 'ceramic'"
+                            :class="{ 'bg-secondary text-primary': activeFilter === 'ceramic' }"
+                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-accent bg-opacity-10 hover:bg-secondary hover:text-primary transition mb-2 text-sm md:text-base">Ceramic Coating</button>
+                    <button @click="activeFilter = 'furniture'"
+                            :class="{ 'bg-secondary text-primary': activeFilter === 'furniture' }"
+                            class="px-3 py-1 md:px-4 md:py-2 rounded-full bg-accent bg-opacity-10 hover:bg-secondary hover:text-primary transition mb-2 text-sm md:text-base">Furniture Cleaning</button>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div x-show="activeFilter === 'all' || activeFilter === 'detailing'"
+                         class="bg-accent bg-opacity-10 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
+                         @click="modalOpen = true; modalContent = { title: 'Detailing', image: 'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'This vehicle received our premium detailing service, restoring its glossy finish.' }">
+                        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Detailing Example" class="w-full h-full object-cover">
+                    </div>
+                    <div x-show="activeFilter === 'all' || activeFilter === 'paint'"
+                         class="bg-accent bg-opacity-10 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
+                         @click="modalOpen = true; modalContent = { title: 'Paint Correction', image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'This car\'s paint was corrected to remove swirl marks and scratches, restoring its shine.' }">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Paint Correction Example" class="w-full h-full object-cover">
+                    </div>
+                    <div x-show="activeFilter === 'all' || activeFilter === 'ceramic'"
+                         class="bg-accent bg-opacity-10 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
+                         @click="modalOpen = true; modalContent = { title: 'Ceramic Coating', image: 'https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'This vehicle received our ceramic coating treatment for long-lasting protection and shine.' }">
+                        <img src="https://images.unsplash.com/photo-1563720223185-11003d516935?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Ceramic Coating Example" class="w-full h-full object-cover">
+                    </div>
+                    <div x-show="activeFilter === 'all' || activeFilter === 'furniture'"
+                         class="bg-accent bg-opacity-10 h-48 md:h-64 rounded-lg overflow-hidden cursor-pointer fade-in"
+                         @click="modalOpen = true; modalContent = { title: 'Furniture Cleaning', image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80', description: 'This sofa was deep cleaned and refreshed, removing stains and odors.' }">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Furniture Cleaning Example" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for Services and Gallery -->
+        <div x-show="modalOpen" 
+             x-cloak
+             @keydown.escape.window="modalOpen = false"
+             class="fixed inset-0 z-50 overflow-y-auto" 
+             aria-labelledby="modal-title" 
+             role="dialog" 
+             aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div x-show="modalOpen" 
+                     x-transition:enter="ease-out duration-300" 
+                     x-transition:enter-start="opacity-0" 
+                     x-transition:enter-end="opacity-100" 
+                     x-transition:leave="ease-in duration-200"
+                     x-transition:leave-start="opacity-100" 
+                     x-transition:leave-end="opacity-0" 
+                     class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" 
+                     aria-hidden="true"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div x-show="modalOpen" 
+                     x-transition:enter="ease-out duration-300"
+                     x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave="ease-in duration-200"
+                     x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
+                     x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                     class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title" x-text="modalContent.title">
+                                </h3>
+                                <div class="mt-2">
+                                    <img :src="modalContent.image" :alt="modalContent.title" class="w-full h-auto rounded-lg mb-4">
+                                    <p class="text-sm text-gray-500" x-text="modalContent.description"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button" 
+                                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                @click="modalOpen = false">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section with Map -->
+        <section id="contact" class="py-16 md:py-20 bg-gradient-to-b from-primary to-secondary">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Contact Us</h2>
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full md:w-1/2 px-4 mb-8 md:mb-0 fade-in">
+                        <form id="contactForm" class="bg-accent bg-opacity-10 p-6 rounded-lg" @submit.prevent="sendToWhatsApp">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-3 py-2 bg-primary border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-3 py-2 bg-primary border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="block text-sm font-medium mb-2">Phone</label>
+                                <input type="tel" id="phone" name="phone" required class="w-full px-3 py-2 bg-primary border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary">
+                            </div>
+                            <div class="mb-4">
+                                <label for="services" class="block text-sm font-medium mb-2">Services (Select all that apply)</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services[]" value="Detailing" class="mr-2">
+                                        Detailing
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services[]" value="Paint Correction" class="mr-2">
+                                        Paint Correction
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services[]" value="Ceramic Coating" class="mr-2">
+                                        Ceramic Coating
+                                    </label>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" name="services[]" value="Furniture Cleaning" class="mr-2">
+                                        Furniture Cleaning
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-3 py-2 bg-primary border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-secondary"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-secondary text-primary px-4 py-2 rounded-md hover:bg-opacity-80 transition">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="w-full md:w-1/2 px-4 fade-in">
+                        <div class="bg-accent bg-opacity-10 p-6 rounded-lg h-full">
+                                                        <h3 class="text-xl font-semibold mb-4">Contact Information</h3>
+                            <p class="mb-2"><i class="fas fa-map-marker-alt mr-2 text-secondary"></i> Surrey, British Columbia</p>
+                            <p class="mb-2"><i class="fas fa-phone mr-2 text-secondary"></i> (604) 726-7042</p>
+                            <p class="mb-4"><i class="fas fa-envelope mr-2 text-secondary"></i> info@topclassautodetailing.com</p>
+                            <div class="mb-4">
+                                <h4 class="text-lg font-semibold mb-2">Business Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 10:00 AM - 4:00 PM</p>
+                                <p>Sunday: Closed</p>
+                            </div>
+                            <div class="aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d166923.75493619627!2d-122.95384349999999!3d49.1042981!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d9a1f1b9a9f3%3A0x5f9e0f9b7c3d4f0!2sSurrey%2C%20BC!5e0!3m2!1sen!2sca!4v1652345678901!5m2!1sen!2sca" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Merchandise Section -->
+        <section id="merchandise" class="py-16 md:py-20 bg-primary">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 md:mb-12 text-center fade-in">Top Class Auto Detailing Merchandise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition fade-in">
+                        <img src="https://via.placeholder.com/300x300.png?text=Top+Class+T-Shirt" alt="Top Class Auto Detailing T-Shirt" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Top Class Auto Detailing T-Shirt</h3>
+                        <p class="text-gray-300 mb-4">Show your support with our premium quality t-shirt</p>
+                        <p class="text-xl font-bold text-secondary mb-4">$24.99</p>
+                        <button class="bg-secondary text-primary px-4 py-2 rounded-full hover:bg-opacity-80 transition">Add to Cart</button>
+                    </div>
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition fade-in">
+                        <img src="https://via.placeholder.com/300x300.png?text=Top+Class+Cap" alt="Top Class Auto Detailing Cap" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Top Class Auto Detailing Cap</h3>
+                        <p class="text-gray-300 mb-4">Stay cool with our stylish and comfortable cap</p>
+                        <p class="text-xl font-bold text-secondary mb-4">$19.99</p>
+                        <button class="bg-secondary text-primary px-4 py-2 rounded-full hover:bg-opacity-80 transition">Add to Cart</button>
+                    </div>
+                    <div class="bg-accent bg-opacity-10 p-6 rounded-lg shadow-lg hover:shadow-xl transition fade-in">
+                        <img src="https://via.placeholder.com/300x300.png?text=Top+Class+Mug" alt="Top Class Auto Detailing Mug" class="w-full h-64 object-cover rounded-lg mb-4">
+                        <h3 class="text-xl font-semibold mb-2">Top Class Auto Detailing Mug</h3>
+                        <p class="text-gray-300 mb-4">Enjoy your morning coffee with our branded mug</p>
+                        <p class="text-xl font-bold text-secondary mb-4">$14.99</p>
+                        <button class="bg-secondary text-primary px-4 py-2 rounded-full hover:bg-opacity-80 transition">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <img src="img/logo.png" alt="Top Class Auto Detailing Logo" class="h-12 w-auto mb-4">
+                    <h3 class="text-xl font-semibold mb-4">Top Class Auto Detailing</h3>
+                    <p class="mb-4">Professional auto detailing services in Surrey, British Columbia. We're committed to making your vehicle look its best.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-secondary transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-secondary transition">About Us</a></li>
+                        <li><a href="#services" class="hover:text-secondary transition">Services</a></li>
+                        <li><a href="#gallery" class="hover:text-secondary transition">Gallery</a></li>
+                        <li><a href="#testimonials" class="hover:text-secondary transition">Testimonials</a></li>
+                        <li><a href="#contact" class="hover:text-secondary transition">Contact</a></li>
+                        <li><a href="#merchandise" class="hover:text-secondary transition">Merchandise</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2 text-secondary"></i> Surrey, British Columbia</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2 text-secondary"></i> (604) 726-7042</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-2 text-secondary"></i> info@topclassautodetailing.com</p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h3 class="text-xl font-semibold mb-4">Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                    <p>Saturday: 10:00 AM - 4:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2024 Top Class Auto Detailing. All rights reserved.</p>
+                <p class="mt-2">Powered by <a href="https://dualitydomain.com" target="_blank" rel="noopener noreferrer" class="text-secondary hover:underline">Duality Domain</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fade-in animation
+        function fadeInElements() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('appear');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', fadeInElements);
+        window.addEventListener('load', fadeInElements);
+
+        // Form submission to WhatsApp
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            const services = Array.from(document.querySelectorAll('input[name="services[]"]:checked')).map(el => el.value).join(', ');
+
+            const whatsappMessage = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AServices: ${services}%0AMessage: ${message}`;
+            const whatsappUrl = `https://wa.me/16047267042?text=${whatsappMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', sendToWhatsApp);
+    </script>
+</body>
+</html>
